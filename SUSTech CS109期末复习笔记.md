@@ -1,35 +1,45 @@
 # SUSTech CS109期末复习笔记
-> 现在是2025年6月12日星期四20:34，我要开始突击JavaA了
-# Chapter1： Introduction to Computers, Programs, and Java
-## What is a computer?
+> 现在是2025年6月12日星期四20:34，我要开始突击JavaA了  
+喜报：现在是2025年6月15日星期日15:44，我突击完了
+
+# 第1章：计算机、程序、Java简介 Introduction to Computers, Programs, and Java
+
+## 计算机 Computer
 - 分为硬件（CPU RAM Disk等）和软件（操作系统、应用程序等）两部分
 - 硬件受软件引导执行命令和指令
-## What is a computer program?
+
+## 计算机程序 Computer Program
 - 计算机程序是一组机器可读的指令，用于告知计算机如何执行特定任务
-## What is a (programming) language?
+
+## 编程语言 Programming Language
 - 低级语言：给电脑理解的
 - 高级语言：给人类理解的
+
 ## 编译器 Compiler 
-- 将用**高级语言**编写的**程序源代码**转换成能在计算机上运行的**机器码(machine code)**
+- 将用**高级语言**编写的**程序源代码**转换成能在计算机上运行的**机器码**(machine code)
+
 ## 解释器 Interpreter 
 - 从源代码读取**一行指令**、转换成**机器码或虚拟机器码**并**立即**执行
+
 ## Java简史
 - 1994年Sun Microsystems公司（2009年被Oracle收购）创立的项目，目标是"write once, run anywhere"。这个基于**C++**的语言被命名为**Java**
 - 为什么叫Java？因为爪哇（Java）岛盛产咖啡，而“程序员要喝大量的咖啡”
 - Java之父：James Gosling
 - Java的第一个版本：JDK1.0，1996年10月23日发布
+
 ## 编写Java程序步骤
 1. 编写源代码
 2. 编译源代码成**字节码**：javac hello.java
-3. 在**JVM(Java Virtual Machine)**读取、识别、**解释**、运行**字节码**：java hello  
+3. 在**JVM**(Java Virtual Machine)读取、识别、**解释**、运行**字节码**：java hello  
 
 ![实例](image.png)
 
 > Java既是**编译型**语言又是**解释型**语言的原因：第2步是**编译**、第3步为**解释**  
-加入了中间件（字节码）兼顾跨平台和性能，在不同平台上使用不同的JVM运行字节码  
+加入了中间件（**字节码**（ByteCode））兼顾跨平台和性能，在不同平台上使用不同的JVM运行字节码  
 (Write Once and Run Anywhere)
+
 ## JVM 和 JRE 和 JDK
-- JVM(Java Virtual Machine ): 运行Java程序的虚拟机
+- JVM(Java Virtual Machine ): Java虚拟机，运行Java程序的虚拟机
 - JRE(Java Runtime Environment): Java运行时环境，提供JVM及核心类库
 - JDK(Java Development Kit): Java开发套件，包括
     1. JRE
@@ -38,6 +48,7 @@
     4. 其他开发工具
 
 - 总结：JRE = JVM + 类库；JDK = JRE + 开发工具
+
 ## 第一个程序
 ```Java
 public class Welcome1{
@@ -48,19 +59,24 @@ public class Welcome1{
 }
 ```
 输出：`Hello World!`
+
 ## 一些术语解释
+
 ### Keyword 关键词
 - Java保留，全部小写。例如：`class` , `new` , `public` , `static`等
+
 ### Identifiers 标识符
 - `Welcome1`是一个标识符，是类名
 - 只允许**大小写英文字母和数字**、**$**和**_**（下划线）
 - 不允许数字开头。例如：`123name`不是一个合法的标识符
+
 #### 标识符命名
-- 使用驼峰式命名规范（Camel Case），**大写**除了第一个单词之外的单词**首字母**。
-- 对于类名，第一个单词的首字母也应大写，例如：`ClassName`
+- 使用**驼峰式命名规范**（Camel Case），单词首字母大写，单词之间没有连接符。
+- 对于类名，**所有单词**的首字母均大写，例如：`ClassName`。称之为大驼峰式命名规范（Upper Camel Case）
 - 对于常量，所有字母均应大写，例如：`public static final double PI = 3.14;`
-- 对于其他标识符，大写除了第一个单词之外的单词首字母。例如：`myMethod`, `myParameter`等
+- 对于其他标识符，**首单词**的首字母小写，**后续单词**首字母大写。例如：`myMethod`, `myParameter`等。称之为小驼峰式命名规范（Lower Camel Case）
 - Java对于大小写敏感，所以`main`和`Main`是不同的标识符
+
 ### Comments 注释
 ```Java
 //这是一个行注释
@@ -81,6 +97,7 @@ public class Welcome1{
 ```Java
 // /* 这样的注释是合法的 */
 ```
+
 ### Braces 花括号
 - 标识一个代码块
 - 标识每个类的方法的开始和结束（不可或缺）
@@ -94,21 +111,24 @@ public class Welcome1{
     1. `\n`: 换行符
     2. `\t`: Tab
     3. `\"`,`\'`,`\\`等：输出特殊字符。例如：`System.out.println("\"in quotes\"");`输出： "in quotes"
+
 ## Bug
 - 编译错误 Compile Error: 程序语法存在问题
 - 运行时错误 Runtime Error: 程序抛出异常，例如：数组越界等
 - 逻辑错误 Logical Error: 程序运行但得到了错误的结果
 
-# Chapter2: Data Typesa & Computation
+# 第2章: 数据类型和计算 Data Types & Computation
 
 ## 数据类型 Data Types
-- Java里数据类型分为**基本数据类型（Primitive data type）**和**复杂数据类型（Complex data type）**，后者也称为**引用类型（Reference type）**或者非基本数据类型
+- Java里数据类型分为**基本数据类型**（Primitive data type）和**复杂数据类型**（Complex data type），后者也称为**引用类型**（Reference type）或者非基本数据类型
+
 ### 基本数据类型 Primitive data type
 - 整数类型 Integral types: `byte`, `short`, `int`, `long`  -> 整数
 - 浮点数类型 Floating-point types : `float`, `double`  -> 小数
-- 布尔类型 boolean data type : true & false
-- 字符类型 char data type : 字符
-#### 整数类型
+- 布尔类型 Boolean data type : `true` & `false`
+- 字符类型  : 字符
+
+#### 整数类型 Integral types
 | Type  |  Size  |       Range        |
 | :---: | :----: | :----------------: |
 | byte  | 8 bits |    -128 to +127    |
@@ -116,7 +136,7 @@ public class Welcome1{
 |  int  | 32 bits | -21.47亿 to +21.47亿 |
 | long  | 64 bit  |  -10^18 to +10^18  |
 |       |        |                    |
-#### 浮点数类型
+#### 浮点数类型 Floating-point types
 | Type  |  Size  |       Range        |
 | :---: | :----: | :----------------: |
 | float（单精度）  | 32 bits |    -3.4*10^38 to +3.4*10^38  |
@@ -124,14 +144,14 @@ public class Welcome1{
 - Example:
 ```Java
 double pi=3.1415926;
-float f=234.5f; //float类型需要在数字后面加上字母f，告知编译器这是个float类型
+float f=234.5f; // float类型需要在数字后面加上字母f，告知编译器这是个float类型
 ```
 - `float`类型可以保存小数点后**7**位数字
 - `double`类型可以保存小数点后**16**位数字
-#### 布尔类型
+#### 布尔类型 Boolean data type
 - 占用1个bit
 - 只有两个可能值：`true`和`false`
-#### 字符类型
+#### 字符类型 Char data type
 - 代表单个16-bit Unicode字符
 - 从'\u0000'到'\uffff'共65536个字符，涵盖大多数文字，也包括emoji
 - 例如：
@@ -144,16 +164,16 @@ System.out.printf("%c %c %c", c2, c3, c4);
 ```
 输出结果：南科大
 
-## 算术运算 Arithmetic computation
+## 算术运算 Arithmetic Computation
 
-### 算术运算符 Arithmetic operators
+### 算术运算符 Arithmetic Operator
 - （+ - * / % ）对应 加 减 乘 除 取余
 - （* / %）优先级高于（+ -）
 - `()`括号优先级最高
-### 逻辑表达式 Conditional expressions
+### 逻辑表达式 Conditional Expression
 - 相同运算符 Equality operators：`==`,`!=`
 - 关系运算符 Relational operators `>`,`<`,`>=`,`<=`
-### 赋值操作符 Assignment operator
+### 赋值操作符 Assignment Operator
 - `i=1`表达式的值是1
 ### 组合赋值操作符 Compound Assignment Operator
 - 例如`+=` , `-=` , `*=` , `*=` , `%=`
@@ -184,25 +204,27 @@ int b = a++;
 - `&&` : 逻辑与，前后**均为**`true`时，表达式的值才为`true`
 - `||` : 逻辑或，前后**有一个为**`true`时，表达式值就为`true`
 - `^` :  逻辑异或，前后**相同时**是`false`，不同时值为`true`
+
 ### `||`和`&&`的短路求值 Short-circuit Evaluation
 - 当表达式可以确定值时，计算终止
 - 例如表达式`(1 == 2) && (3 == 3)`: 因为前面已经是`false`，整个表达式的值必为`false`，故后半部分不会计算
 - 而`|`和`&`会全部计算
 - 当后面的表达式有副作用时，使用`||`和`&&`就很有必要了
+
 ### 运算优先级及结合性总结 Precedence and associativity
 ![alt text](image-7.png)
+
 ## 格式字符串 Format String
 - 使用`System.out.printf()`可以传入格式字符串，`String.format()`方法可以获取格式化后的字符串
+
 ### 格式说明符 Format Specifiers
 - 以`%`开始，后接一个字母
 - 例如：`%d`代表整数占位符，`%s`代表字符串占位符
 
-# Chapter3: Control Statements Part I
-```Java
-if(grade >= 60)
-    System.out.println("Passed");
-```
+# 第3章：控制语句 Control Statements 
+
 ## 选择结构 Selection Structure 
+
 ### if结构
 - `if`语句: 单路选择  
 
@@ -214,10 +236,11 @@ if(grade >= 60)
 else
     System.out.println("Failed");
 ```
-三元运算符 Ternary Operator 
+- 三元运算符 Ternary Operator 
 ```Java
 String result = grade >= 60 ? "Passed" : "Failed";
 ```
+
 #### 多分支 multi-way
 ```Java
 if (score >= 90)
@@ -231,6 +254,7 @@ else if(scorte >= 60)
 else
     System.out.print("F");
 ```
+
 #### 常见错误
 1. 在else后面添加条件
 ![alt text](image-2.png)
@@ -253,6 +277,7 @@ if (score >= 90);  -> 错误的分号
 - 当遇到`break`语句时，`switch`语句终止。程序跳转到`switch`语句后面的语句执行。`case`语句不必须要包含`break`语句。如果没有`break`语句出现，程序会继续执行下一条`case`语句，直到出现`break`语句。
 - `switch`语句可以包含一个`default`分支，该分支一般是`switch`语句的最后一个分支（可以在任何位置，但建议在最后一个）。`default`在没有`case`语句的值和变量值相等的时候执行。
 - **switch case 执行时，一定会先进行匹配，匹配成功返回当前 case 的值，再根据是否有 break，判断是否继续输出，或是跳出判断。**
+
 ## 循环结构 Repetition/Looping Struction 
 - 计数器控制的循环 Counter-Controlled Repetition
 - 边界值控制的循环 Sentinel-Controlled Repetition 
@@ -273,12 +298,14 @@ if (score >= 90);  -> 错误的分号
 4. 堆叠规则和嵌套规则可以按任意顺序不限次数地重复应用
 - `if`语句可以提供任何形式的选择结构
 - `while`语句可以提供任何形式的循环结构
+
 ## 类型转换 Type Cast
 ```Java
 int total = 20;
 int gradeCounter = 6;
 double average=(double) total / gradeCounter;
 ```
+
 ### 一元类型转换运算符 Unary Cast Operator 
 - 例如上面的`(double)`
 - 类型转换运算符为变量创建了一个**临时**副本用于运算。在上例中，为`tota`l变量临时创建了一个`double`副本用于运算。
@@ -288,29 +315,32 @@ double average=(double) total / gradeCounter;
 ### 类型提升 Type Promotion
 - 在Java中，算术运算两边的操作数类型需要相同
 - 在上例中，由于运算符左边是一个`double`类型，左边是一个`int`类型，操作数类型不相同
-- 所以左边的`int`类型会隐式提升（Implicitly Promoted）至`double`类型
+- 所以左边的`int`类型会**隐式提升**（Implicitly Promoted）至`double`类型
 - 除了变量外，也同样适用于值，例如:
 ```Java
 int x = 2;
 double y =x * 2.0;
 ```
-### 隐式提升规则
+### 隐式提升规则 Implicitly Promoted Rules
 ![alt text](image-5.png)
-## 变量(Variables)
-### 定义(Declaration)、赋值(Assignment)、使用(Usage)
-- 先定义，然后才能赋值，然后才能使用
-### 块作用域 Block Scope
-- 在其定义的代码块里（大括号）
 
-# Chapter4: Arrays
+## 变量(Variables)
+
+### 声明(Declaration)、赋值(Assignment)、使用(Usage)
+- 先声明，然后才能赋值，然后才能使用
+- 
+### 块作用域 Block Scope
+- 在其声明的代码块里（大括号）
+
+# 第4章：数组 Arrays
 > 数组（Array）是一组**相同类型**元素的集合，数组是Objects，是引用类型（Reference Type）
 
-## 定义和创建数组 Declare and Create Arrays
+## 声明和创建数组 Declare and Create Arrays
 ```Java
 int[] c;
 c = new int[12];
 ```
-- 第一行定义数组时，并不会为其分配内存空间，也不能使用数组
+- 第一行声明数组时，并不会为其分配内存空间，也不能使用数组
 - `12`是这个数组的大小（Size），在初始化数组时，必须给出数组的大小
 - 在数组被创建后，其大小不能更改
 - 数组的大小可以通过arr.length获取
@@ -335,6 +365,7 @@ for(int element : arr){
     System.out.println(element);
 }
 ```
+
 ## 初始化数组 Initializing Array
 ```Java
 int[] n1 = new int[]{1 , 2 , 3 , 4 , 5 , 6};
@@ -343,11 +374,12 @@ int[] n1 = new int[]{1 , 2 , 3 , 4 , 5 , 6};
 ```Java
 int[] n2 = {1 , 2 , 3 , 4 , 5 , 6};
 ```
-也可以省略`new int[]`，但只能在定义时。例如以下语句是**非法**的：
+也可以省略`new int[]`，但只能在**声明数组**时。例如以下语句是**非法**的：
 ```Java
 int[] c;
 c = {1 , 2 , 3 , 4 , 5 , 6};
 ```
+
 ## 复制数组 Copying Array
 - 赋值操作不会影响数组的内容，只会更改数组的引用
 ![alt text](image-9.png)
@@ -359,6 +391,7 @@ for(int i = 0; i < sourceArray.length; i++){
     targetArray[i] = sourceArray[i];
 }
 ```
+
 ## 二维和多维数组 Two-dimensional & Multi-dimensional Arrays
 多维数组可以看成是**数组的数组**，比如二维数组就是一个特殊的一维数组，其每一个**元素**都是一个**一维数组**，例如：
 ```Java
@@ -366,6 +399,7 @@ String[][] str = new String[3][4];
 ```
 这是一个两行三列的数组
 - 注意：二维数组并不一定是一个矩形，每行的长度可以不同
+
 ### 多维数组的初始化（以二维数组为例）
 1. 直接为每一维分配空间，格式如下：
 ```Java
@@ -388,6 +422,7 @@ s[1][1] = new String("you");
 s[1][2] = new String("!");
 ```
 s[0]=new String[2] 和 s[1]=new String[3] 是为最高维分配引用空间，也就是为最高维限制其能保存数据的最长的长度，然后再为其每个数组元素单独分配空间 s0=new String("Good") 等操作。
+
 ### 访问多维数组（以二维数组为例）
 对二维数组中的每个元素，引用方式为 `arrayName[index1][index2]`，例如：`num[1][0];`
 ```Java
@@ -406,18 +441,23 @@ for(int[] arr : a){
     }
 }
 ```
-# Chapter5: Method
+
+# 第5章：方法 Method
 > 为了把一个大任务拆成几个小任务
-## 方法的定义和调用 Method Declaration and Invoaction
-### 定义一个方法
+
+## 方法的声明和调用 Method Declaration and Invoaction
+
+### 声明一个方法
 ![alt text](image-10.png)
 - 返回类型 Return Type: 方法返回值的类型
 - 形式参数 Parameters: 以逗号分隔的参数列表，提供给方法来完成任务
+
 ### 调用方法
 ![alt text](image-11.png)
 - 实际参数 Arguments: 实际提供给方法的参数
+
 ## 参数的传递
-- 在Java中，所有的参数都是**按值传递（Passed by Value）**，意味着方法会得到参数的副本
+- 在Java中，所有的参数都是**按值传递**（Passed by Value），意味着方法会得到参数的副本
     - 基本数据类型（Primitive Type）：传递数据值的副本
     - 引用数据类型（Reference Type）：传递数据引用的副本
 
@@ -427,10 +467,12 @@ for(int[] arr : a){
 ```Java
 public static void main(String[] args)
 ```
+
 ### 传递参数的提升 Argument Promotion
 - 类似于前面提到的运算时的隐式提升
 - 例如：`Math.sqrt()`需要`double`类型的参数，在`Math.sqrt(4)`里面，Java会隐式提升`4`至`double`类型的`4.0`
 - 提升规则同运算时的隐式提升
+
 ### 可变长度参数列表 Variable-Length Argument Lists
 - 可以让方法接受**不定长度**的参数列表
 - 语法：在类型后面加入`...`。例如：
@@ -439,15 +481,20 @@ public static double average(double... numbers)
 ```
 - 每个方法**最多**只能有一个可变参数，且必须放在参数列表的**最后面**
 - 在方法内部，可变参数列表是一个对应类型的**数组**
+  
 ## 方法调用栈 Method-Call Stack
 每次调用方法时，系统都会创建一个存储该方法参数和变量的激活记录（Activation Record），并将该激活记录置于称为方法调用栈的内存区域中。
+
 ### 调用栈的工作原理
 - 方法调用：当你在代码中调用一个方法时，JVM会创建一个新的栈帧并将其推入调用栈。
 - 执行：在栈顶的栈帧中执行当前方法。
 - 方法返回：当方法执行完毕，其返回值（如果有的话）被传递回它的调用者，然后栈帧被弹出，控制权返回到上一个方法的栈帧
+
 ### 检查调用栈 Inspecting the Call Stack
 ![alt text](image-14.png)
-## 方法重载 Method Overloading
+
+## 方法签名与重载 Method Signature & Overloading
+
 ### 方法签名 Method Signature
 - 由方法的**名称**、参数的**数量、类型、顺序**构成（与返回值和修饰符无关）
 - 例如，在这个方法中
@@ -458,7 +505,7 @@ public double calculateAnswer(double wingSpan, int numberOfEngines, double lengt
 }
 ```
 方法签名为`calculateAnswer(double, int, double, double)`
-### 方法重载
+### 方法重载 Method Overloading
 - 在一个类里，可以存在多个方法名相同，但**参数列表**不同的方法
 - 调用时，Java编译器会根据**方法签名**自动选择合适的方法
 - 目的：创建一系列根据**不同参数**完成**相同或类似任务**的方法
@@ -478,10 +525,11 @@ double square(int a)
 - 更易于更新、测试、修复
 - 便于协作
 
-# Chapter6: Introduction to Classes and Objects
+# 第6章：类与对象 Introduction to Classes and Objects
 > 面向对象编程: Object-Oriented Programming(OOP)
 
 ## 类 Class
+
 ### 类的定义 Declaring a Class
 使用关键字`class`
 ```Java
@@ -507,6 +555,7 @@ poblic vlass GradeBookTest{
 ```
 - 每个新创建的类都是一种新的数据类型
 - 通过成员操作符（Member Operator）来访问类中的方法
+
 ## 类的属性 Class Attributes
 - 生命周期（Lifespan）: 对象创建->对象销毁
 - 代表类中的变量Variables（或者称为字段（Fields））
@@ -524,6 +573,7 @@ public class GradeBook {
     }
 }
 ```
+
 ## 类的构造方法
 ```Java
 public class GradeBook{
@@ -539,11 +589,13 @@ public class GradeBook{
 - 如果已经显式定义了一个构造函数，则**不会**创建。
 - 引用类型必须是Not-Null才可以使用
 
-# Chapter7: Strings & Wrapper Class
+# 第7章：字符串和包装类 Strings & Wrapper Class
 > 一个字符串（Srtring）是一个字符序列
+
 ## 不可变字符串对象类 `String`
 - 是一个Java预定义类 Perdefined Class
 - 是引用类型 Reference Type
+
 ### 实例化一个`String`对象
 有很多方法
 ```Java
@@ -555,6 +607,7 @@ String s4 = new String(charArray);
 String s5 = new String(charArray , 3 , 2);//偏移量Offset和计数Count，s5="lo"
 String s6 = "Hello World";//String字面常量 String Literals: 在双引号中间的一串字符
 ```
+
 #### 使用字面常量和`new`关键字实例化的对比
 - Java编译器会给每个字面常量在内存中生成一个区域来储存，相同的字面常量会指向同一个堆(Heap)地址
 ```Java
@@ -567,13 +620,14 @@ System.out.println(s3 == s4); // false
 ```
 ![alt text](image-16.png)
 
-### 字符串的不可变性（Immutabililty）
+### 字符串的不可变性 Immutabililty 
 - 在Java中，字符串对象一旦创建就不能被修改
 - 任何修改都会新建一个`String`对象
 ![alt text](image-17.png)
 
 ### `String`类中的方法
 > 参考资料：[菜鸟教程 - String类中的方法](https://www.runoob.com/java/java-string.html)
+
 #### `int length()`
 - 返回字符串的长度
 ```Java
@@ -620,6 +674,7 @@ if(s1 == s2) System.out.println("s3 = s4");
 ```
 虽然`s1`和`s2`字符串值相同，但因为其指向的内存地址不同，故使用`==`比较并不相同
 - 字符串之间比较值是否相同，务必使用`equals()`方法
+
 ##### `boolean equals(String str)`
 ```Java
 String s1 = "Hello World";
@@ -628,6 +683,7 @@ if(s1.equals(s2)) System.out.println("s1 = s2");
 ```
 因为`s1`的值和`s2`相同，使用`equals()`方法比较，结果是相同的
 - `equals()`方法对大小写敏感
+
 ##### `boolean equalsIgnoreCase(String str)`
 - 忽略字符串大小写，比较两个字符串值是否相同
 ```Java
@@ -636,6 +692,7 @@ String s2 = "HELLO";
 if(s1.equals(s2)) System.out.println("s1 = s2"); // false
 if(s1.equalsIgnoreCase(s2)) System.out.println("s1 = s2");// true
 ```
+
 #### `int compareTo(String str)`
 - Unicode码表
 ![alt text](image-18.png)
@@ -661,10 +718,11 @@ String s5 = "HEL", s6 = "HEllo";
 int result3 = s5.compareTo(s6));
 //result3 = 32（l(0068)-L(0048)）
 ```
+
 #### 测试是否以指定前后缀开始的方法
-- `boolean startsWith(String str)`: 测试此字符串是否以指定前缀开始。
-- `boolean startsWith(String str, int toffset)`: 测试此字符串从指定索引开始的子字符串是否以指定前缀开始。
-- `boolean endsWith(String str)`: 测试此字符串是否以指定后缀结束。
+- `boolean startsWith(String str)`: 测试此字符串是否以**指定前缀开始**。
+- `boolean startsWith(String str, int toffset)`: 测试此字符串从指定索引开始的**子字符串**是否以**指定前缀开始**。
+- `boolean endsWith(String str)`: 测试此字符串是否以**指定后缀结束**。
 ```Java
 String s1 = "Hello World";
 if(s1.startsWith("He")) System.out.print("true"); // true
@@ -675,12 +733,13 @@ if(s2.endsWith("ld")) System.out.print("true"); // true
 String s3 = "Hello World";
 if(s3.startsWith("llo", 2)) System.out.print("true"); // true
 ```
+
 #### 定位字符（串）出现位置的方法
 - `int indexOf()`
-    - `int indexOf(char c)`: 返回指定字符在字符串中第一次出现处的索引，如果此字符串中没有这样的字符，则返回`-1`。
-    - `int indexOf(char c, int fromIndex)`: 返回从`fromIndex`位置开始查找指定字符在字符串中第一次出现处的索引，如果此字符串中没有这样的字符，则返回`-1`。
-    - `int indexOf(String str)`: 返回指定字符在字符串中第一次出现处的索引，如果此字符串中没有这样的字符，则返回`-1`。
-    - `int indexOf(String str, int fromIndex)`: 返回从`fromIndex`位置开始查找指定字符在字符串中第一次出现处的索引，如果此字符串中没有这样的字符，则返回`-1`。
+    - `int indexOf(char c)`: 返回指定字符在字符串中**第一次出现处**的索引，如果此字符串中没有这样的字符，则返回`-1`。
+    - `int indexOf(char c, int fromIndex)`: 返回从`fromIndex`位置开始查找指定字符在字符串中**第一次出现处**的索引，如果此字符串中没有这样的字符，则返回`-1`。
+    - `int indexOf(String str)`: 返回指定字符在字符串中**第一次出现处**的索引，如果此字符串中没有这样的字符，则返回`-1`。
+    - `int indexOf(String str, int fromIndex)`: 返回从`fromIndex`位置开始查找指定字符在字符串中**第一次出现处**的索引，如果此字符串中没有这样的字符，则返回`-1`。
 ```Java
 String s = "abcdefghijklmabcdefghijklm";
 System.out.println(s.indexOf('c')); // 2
@@ -690,11 +749,11 @@ System.out.println(s.indexOf("def")); // 3
 System.out.println(s.indexOf("def", 7)); // 16
 System.out.println(s.indexOf("hello")); // -1
 ```
-- `int lastIndexOf()`: 从字符串末端反向搜索，其他同`indexOf()`方法
-    - `int lastIndexOf(char c)`: 返回指定字符在此字符串中最后一次出现处的索引，如果此字符串中没有这样的字符，则返回`-1`。
-    - `int lastIndexOf(char c, int fromIndex)`: 返回指定字符在此字符串中最后一次出现处的索引，从指定的索引处开始进行反向搜索，如果此字符串中没有这样的字符，则返回`-1`。
-    - `int lastIndexOf(String str)`: 返回指定子字符串在此字符串中最右边出现处的索引，如果此字符串中没有这样的字符，则返回`-1`。
-    - `int lastIndexOf(String str, int fromIndex)`: 返回指定子字符串在此字符串中最后一次出现处的索引，从指定的索引开始反向搜索，如果此字符串中没有这样的字符，则返回`-1`。
+- `int lastIndexOf()`: 从字符串末端**反向搜索**，其他同`indexOf()`方法
+    - `int lastIndexOf(char c)`: 返回指定字符在此字符串中**最后一次出现处**的索引，如果此字符串中没有这样的字符，则返回`-1`。
+    - `int lastIndexOf(char c, int fromIndex)`: 返回指定字符在此字符串中**最后一次出现处**的索引，从指定的索引处开始进行反向搜索，如果此字符串中没有这样的字符，则返回`-1`。
+    - `int lastIndexOf(String str)`: 返回指定子字符串在此字符串中**最后一次出现处**的索引，如果此字符串中没有这样的字符，则返回`-1`。
+    - `int lastIndexOf(String str, int fromIndex)`: 返回指定子字符串在此字符串中**最后一次出现处**的索引，从指定的索引开始反向搜索，如果此字符串中没有这样的字符，则返回`-1`。
 ```Java
 String s = "abcdefghijklmabcdefghijklm";
 System.out.println(s.lastIndexOf('c')); // 15
@@ -704,18 +763,20 @@ System.out.println(s.lastIndexOf("def")); // 16
 System.out.println(s.lastIndexOf("def", 7)); // 3
 System.out.println(s.lastIndexOf("hello")); // -1
 ```
+
 #### 截取字符串的方法
 `substring()`方法返回字符串的子字符串。
 - `String substring(int beginIndex)`
 - `String substring(int beginIndex, int endIndex)`
 - 参数
-    - `beginIndex`: 起始索引**（包括）**, 索引从0开始。
-    - `endIndex`: 结束索引**（不包括）**。
+    - `beginIndex`: 起始索引，**（包括本身）**, 索引从0开始。
+    - `endIndex`: 结束索引，**（不包括本身）**。
 ```Java
 String s = "abcdefghijklmabcdefghijklm";
 System.out.println(s.substring(20)); // hijklm
 System.out.println(s.substring(3, 6)); // def
 ```
+
 #### 替换字符（串）的方法
 - `replace(char oldChar, char newChar)`方法通过用`newChar`字符替换字符串中出现的所有`oldChar`字符，并返回替换后的新字符串。
 - `replace(String oldStr, String newStr)`方法通过用`newStr`字符串替换字符串中出现的所有`oldStr`字符串，并返回替换后的新字符串。
@@ -788,20 +849,22 @@ sc.close();
 - `Integer.parseInt(Object o)`: 将一个对象转换成`int`类型
 - `Double.parseDouble(Object o)`: 将一个对象转换成`double`类型
 ### 自动装箱（auto-boxing）和自动拆箱（auto-unboxing）
-- 自动装箱：将基本数据类型自动转换为包装类
+- 自动装箱：将基本数据类型自动**转换**为包装类
 ```Java
 int a =1;
 Integer b = a;
 ```
-- 自动拆箱：将包装类自动转换为基本数据类型
+- 自动拆箱：将包装类自动**转换**为基本数据类型
 ```Java
 Integer c = 1;
 int d = c;
 ```
-# Chapter8: Classes & Objects: A Deeper Look
+# 第8章：类与对象 Classes & Objects: A Deeper Look
 > 基础部分请参考前文Chapter5和Chapter6，这里不再赘述
+
 ## 权限控制（Access Control），数据有效性验证（Data Validation），和数据封装（Data Encapsulation）
 - 将所有字段设置为`private`，使用`getter`和`setter`方法包装，在方法内部进行必要的操作（有效性验证，封装）等
+
 ### `this`关键字
 - 用来区分形参里和类里的同名变量
 ```Java
@@ -817,6 +880,7 @@ public class Time1 {
     }
 }
 ```
+
 ## 组合 Conposition
 - 在类中使用别的类的对象
 
@@ -838,9 +902,9 @@ public class Employee {
     }
 }
 ```
-- 在这个例子中，`name`变量是实例成员，每当创建一个新对象时都会生成一个新副本
-- 而`count`变量是静态成员，是类级别（class-wide）的信息，所有对象共享这个成员
-- `getCount`是一个静态方法（Static Method），其内部只能访问静态成员，而不能访问实例成员
+- 在这个例子中，`name`变量是实例成员，每当创建一个新对象时都会生成一个**新**副本
+- 而`count`变量是静态成员，是**类级别**（Class-wide）的信息，所有对象**共享**这个成员
+- `getCount`是一个静态方法（Static Method），其内部只能访问静态成员，而**不能**访问实例成员
 ```Java
 public class EmployeeTest {
     public static void main(String[] args) {
@@ -872,12 +936,12 @@ public class EmployeeTest {
 - Math类中提供了许多静态的变量和方法
 ![alt text](image-23.png)
 - `String.valueOf()`将任何对象转换成一个`String`对象
-- 基本数据类型没有`valueOf()`方法，因为其没有方法
+- 基本数据类型没有`valueOf()`方法，因为基本数据类型**没有**方法
 
 ## 包 Package
 - 包帮助程序员组织应用程序组件（逻辑相关的类可置于同一包内，如`java.io`）。
-- 包通过允许程序从其他包导入类（而非将类复制到每个使用它们的程序中）来促进软件复用。
-- 每个Java源文件中只能有一个包声明，且该声明必须位于所有其他声明和语句之前
+- 包通过允许程序从其他包**导入**类（而非将类复制到每个使用它们的程序中）来促进**软件复用**。
+- 每个Java源文件中只能有**唯一一个**包声明，且该声明必须位于**所有其他声明和语句之前**
 ```Java
 package sustech.cs101;
 
@@ -889,16 +953,17 @@ public class Time {
     //...
 }
 ```
-- Java的包结构类似于目录结构。它是由包、子包以及这些包中的类组成的树状结构。
-- Time类应当被放置在对应的目录中（sustech\cs101\Time.java）。可以通过其完全限定名（Fully Qualified Name）进行识别.
+- Java的包结构类似于**目录结构**。它是由包、子包以及这些包中的类组成的树状结构。
+- Time类应当被放置在**对应的目录**中（sustech\cs101\Time.java）。可以通过其完全限定名（Fully Qualified Name）进行识别.
+
 ### `import`语句
 #### 导入类
 ```Java
 import java.util.scanner;
 ```
-- 导入类之后，就可以使用简单名（如`Time`）来使用
-- 如果不导入，则必须使用完全限定名来使用（如`sustech.cs101.Time`），来避免命名冲突
-- `java.lang`软件包主要包括基础功能（比如`String`），该包内所有类都将被隐式导入，所以我们不需要`import java.lang.String;`语句。
+- 导入类之后，就可以使用**简单名**（Simple name）（如`Time`）来使用
+- 如果不导入，则必须使用**完全限定名**（Fully qualified name）来使用（如`sustech.cs101.Time`），来避免命名冲突
+- `java.lang`软件包主要包括基础功能（比如`String`），该包内**所有类**都将被**隐式导入**，所以我们不需要`import java.lang.String;`语句。
 
 #### 导入多个类
 - 如果你使用了一个软件包内的多个类，你可以使用通配符进行按需类型导入（type-import-on-demand declaration）。例如：
@@ -921,7 +986,7 @@ public class Main {
 }
 ```
 ##### 静态导入的歧义性 Ambiguity in static inport
-- 如果从多个不同类中导入同名的静态成员，编译器将抛出错误，因为在缺少类名的情况下，编译器无法确定应该使用哪个成员。
+- 如果从多个不同类中导入**同名**的静态成员，编译器将抛出错误，因为在缺少类名的情况下，编译器无法确定应该使用哪个成员。
 ```Java
 import static java.lang.Math.*;
 import static java.lang.Integer.*;
@@ -932,6 +997,7 @@ public class Main {
     }
 }
 ```
+
 ## 枚举 Enumerations
 ```Java
 public enum Direction {
@@ -940,14 +1006,15 @@ public enum Direction {
 ```
 - 由关键字`enum`引入的**特殊类**。
 - 大括号{ }内是用逗号分隔的枚举常量列表，每个常量代表一个唯一值。
-- 枚举中的标识符必须唯一。
-- 由于是常量，枚举类型字段的名称采用大写字母。
-- 与类相似，所有枚举类型都是引用类型
+- 枚举中的标识符必须**唯一**。
+- 由于是**常量**，枚举类型字段的名称采用**大写字母**。
+- 与类相似，所有枚举类型都是**引用类型**
 - Direction类型的变量只能被赋予枚举中声明的四个常量或`null`（其他值均属非法，无法通过编译）
 ```Java
 Direction d1 = Direction.NORTH;
 Direction d2 = null;
 ```
+
 ### 枚举类的使用
 ```Java
 public class DirectionTest {
@@ -979,6 +1046,7 @@ public class DirectionTest {
         myDirection.tellDirection();
 }
 ```
+
 ### 背后原理
 每个枚举声明都定义了一个具有以下限制的**类**：
 - 枚举构造函数**不能**为public；任何尝试用new运算符创建枚举类型对象的行为都会导致编译错误（运行时无法创建其他Direction实例）
@@ -986,6 +1054,7 @@ public class DirectionTest {
 - 枚举常量隐式具有`static`属性（无需实例即可访问）
 - 枚举常量隐式具有`final`属性（不应被修改的常量）
 ```Java
+//枚举类等效于这个类
 public final class Direction {
     private Direction() {} // private constructor so that no one else could create new Direction objects
     public static final Direction EAST = new Direction();
@@ -998,7 +1067,7 @@ public final class Direction {
 ## `ArrayList<T>`类
 - 数组初始化之后**长度不可变**，为了解决这个问题，我们引入了`ArrayList<T>`类
 - `ArrayList<T>`类能够在运行时**自动**改变长度
-- `ArrayList<T>`是一个**泛型类（Generic Class）**，`T`是这个类课容纳的数据类型
+- `ArrayList<T>`是一个**泛型类**（Generic Class），`T`是这个类课容纳的数据类型
 - 注意：`T`不能为**基本数据类型**，例如`ArrayList<int>`是非法的，应该改为`ArrayList<Integer>`
 ```Java
 Arraylist<String> list = new ArrayList<>();
@@ -1014,10 +1083,11 @@ java.util.Collections.sort(list);
 - `java.util.Collections`类提供了对`List<T>`操作的一些方法（排序、反转等）
 
 ## 栈内存（Stack Memory）和堆内存（Heap Memory）
+
 ### 堆内存 Heap Memory
-- Java运行时使用**堆内存**为**对象（Object）**分配内存。每当我们创建对象（包括数组）时，它都会在堆内存中生成。
+- Java运行时使用**堆内存**为**对象**（Object）分配内存。每当我们创建对象（包括数组）时，它都会在堆内存中生成。
 - 堆空间中创建的任何对象都具有**全局访问**权限，可以从应用程序的任何位置引用（只要持有**该对象的引用**）
-- **垃圾回收机制（Garbage Collection）**会在堆内存上运行，以释放那些**没有任何引用**的对象所占用的内存
+- **垃圾回收机制**（Garbage Collection）会在堆内存上运行，以释放那些**没有任何引用**的对象所占用的内存
 
 ### 垃圾回收（Garbage Collection，GC）
 - 每个对象都会占用系统资源，例如内存（Memory）
@@ -1028,11 +1098,11 @@ java.util.Collections.sort(list);
 - 栈内存存储线程中方法执行所需的信息：
     - 方法特定值（短期存在）
     - 对堆中其他对象的引用（由方法引用的对象）
-- 栈内存始终按**后进先出（LIFO）**顺序进行引用。每当调用方法时，就会在栈内存中为该方法创建一个新块，用于保存局部原始值和其他对象的引用。
+- 栈内存始终按**后进先出**（Last in first out, LIFO）顺序进行引用。每当调用方法时，就会在栈内存中为该方法创建一个新块，用于保存局部原始值和其他对象的引用。
 - 方法一旦结束，对应的内存块就会被擦除，供下一个方法使用。因此与存储**长期存在对象的**堆内存相比，栈内存容量要**小得多**。
 - 动态演示见课件
 
-# Chapter9: Inheritance 继承
+# 第9章：继承 Inheritance
 - 子类（Subclass）继承自超类（Superclass）
 - 子类继承超类的方法和字段（复用超类的代码），也可以有自己的方法和字段
 
@@ -1040,11 +1110,11 @@ java.util.Collections.sort(list);
 - 直接超类 Direct Superclass: 直接继承，比如`B`继承自`A`，`A`就是`B`的直接超类
 - 间接超类 Indirect Superclass: 间接继承，比如`B`继承自`A`，`C`又继承自`B`，则`A`是`C`的间接超类
 ![alt text](image-24.png)
-- 上图中箭头代表“is-a relationship”，在这种关系中，子类也可以被当成超类（例如，卡车是机动车）
+- 上图中箭头代表“is-a relationship”，在这种关系中，子类也可以**被当成**超类（例如，卡车是机动车）
 ![alt text](image-25.png)
 - 上图代表组合（Composition），一个类里面有其他类的引用，称之为“has-a relationship”。
 - Java中**所有类**均隐式直接或间接继承自`Object`
-- Java只支持**单继承（Single Inheritance）**，意味着每个类只能有一个直接超类。
+- Java只支持**单继承**（Single Inheritance），意味着每个类只能有一个直接超类。
 
 ## 访问级别修饰符 Access Level Modifiers
 | 修饰符 Modifier  |  类内 Class  | 包内 Package | 子类内 Subclass | 外部 World |
@@ -1077,6 +1147,7 @@ public class BasePlusCommissionEmployee extends CommissionEmployee {
 - `super`关键字可以调用（invoke）超类的构造方法
 - 必须在子类构造方法的第一行调用`super(arguments)`语句，确保超类被正确初始化
 - 如果没有显式调用超类构造方法，编译器会自动插入对超类无参构造方法的调用。**如果超类不存在无参构造方法，则会导致编译错误**
+
 ### 关于`private`和`protected`的设计区别 
 - 子类直接调用`public`或`protected`的实例变量能够略微**提升性能**，因为无需承担set/get方法调用带来的额外开销
 - 但也会导致下列问题
@@ -1135,7 +1206,7 @@ public boolean equals(Object obj){
 - 例如：超类返回`double`类型，则子类可以返回`float`和`int`类型
 
 ### 隐藏超类实例变量和静态方法
-- 超类的实例变量和静态方法因**不支持多态（不是动态绑定）**而不支持重写
+- 超类的实例变量和静态方法因**不支持多态**（不是动态绑定），而不支持重写
 - 但可以在子类中通过定义一个与超类的静态方法**签名一样的静态方法**隐藏（hide）超类的静态方法
 - 也可以定义**变量名相同**（类型**不需要**相同）的变量来隐藏超类的实例变量
 ```Java
@@ -1162,6 +1233,7 @@ class Child extends Parent {
 Parent.parentMethod(); // 输出 "Parent static"
 Child.parentMethod();  // 输出 "Child static"
 ```
+
 ## 总结
 - 重写需要**继承**关系
 - 重写针对**可访问的实例方法**
@@ -1169,8 +1241,9 @@ Child.parentMethod();  // 输出 "Child static"
 - 超类的实例变量**不支持**重写，但可以**隐藏**
 
 
-# Chapter10: Polymorphism 多态
+# 第10章：多态 Polymorphism 
 > 在Java或面向对象编程（OOP）中，多态性（Polymorphism）是指一个对象能够呈现多种形态的能力
+
 ## 多态行为 Polymrphic Behavior
 - 在Java中，我们可以给一个超类变量指向一个子类对象（最常用的多态方式）
 ```Java
@@ -1178,11 +1251,11 @@ Animal animal; // 编译器识别的类型，在编译时使用
 animal = new Fish(); // JVM识别的类型，在运行时使用
 animal.move(); // 调用子类（Fish）的重写方法
 ```
-- 多态特性，实例方法调用是基于运行时的**实际类型（Actual Type）**，而不是变量的**声明类型（Declared Type）**
+- 多态特性，实例方法调用是基于运行时的**实际类型**（Actual Type），而不是变量的**声明类型**（Declared Type）
 - 例如在本例中，调用的是子类方法
-- 这个过程称之为**动态绑定（Dynamic Binding）**
+- 这个过程称之为**动态绑定**（Dynamic Binding）
 - 注意：不能直接调用子类特有的方法，因为编译器并**不知道**变量的实际类型，而只会**检查声明类型**中是否存在此方法，如果存在则编译成功
-- 为了调用子类特有的方法，我们可以将超类变量显式**向下转型（downcast）**成子类类型的变量
+- 为了调用子类特有的方法，我们可以将超类变量显式**向下转型**（downcast）成子类类型的变量
 - 注意：应使用`instanceof`关键字判断**实际类型**是否为**给定类型**。若不判断而直接转换，如果实际类型不是给定类型，则会抛出`ClassCastException`异常
 ```Java
 Animal animal = new Fish();
@@ -1194,6 +1267,7 @@ if(animal instanceof Fish){
 ```
 - 隐式转换（Implicit Casting）：如第一行，自动**向上转换**
 - 显式转换（Explicit Casting）：如第四行，需显式**向下转换**
+
 ## 多态特性总结
 - 父类引用指向子类对象
 - 父类引用可以调用父类所有成员，需遵守访问权限
@@ -1204,9 +1278,11 @@ if(animal instanceof Fish){
 方法绑定指的是将方法调用与其实现相关联的过程
 - 动态绑定：待执行的方法在**运行时**确定
 - 静态绑定：待执行的方法在**编译时**确定
+
 ## 动态绑定 Dynamic Binding
 - 也称为延迟绑定（Late Binding）或运行时多态（Runtime Polymorphism）
-- 待执行的方法调用在运行时决定，基于**实际类型（Actual Type）**，而不是变量的**声明类型（Declared Type）**
+- 待执行的方法调用在运行时决定，基于**实际类型**（Actual Type），而不是变量的**声明类型**（Declared Type）
+
 ## 静态绑定 Static Binding
 - 也称为初期绑定（Early Binding）或编译时绑定（Compile-time Binding）
 - 编译器根据变量的**实际类型**来决定调用的方法
@@ -1220,16 +1296,19 @@ if(animal instanceof Fish){
 ## `final`关键字
 - 在Java中，`final`关键字可以用来定义常量
 - `final`关键字可以修饰变量、方法和类
+
 ### `final`修饰变量
 - 一旦任何变量被声明为`final`，它就只能被**赋值一次**，即在初始化后**不能被更改**
 ```Java
 private final int I_AM_A_CONSTANT = 2;
 ```
 - 一般情况下，类中的每个字段都会在初始化时被赋初始值（比如0），但`final`字段必须在**定义时**或**每个构造函数完成**前**显式**赋初始值，否则会编译错误
+
 ### `final`修饰方法
 - 表示方法不能被子类重写
 - 私有方法（`private`）均**隐式声明**为`final`
 - 静态方法（`private`）均**隐式声明**为`final`
+
 ### `final`修饰类
 - 表示类不能被继承（来避免子类重写方法造成可能的安全问题）
 - 此时类的所有方法均**隐式声明**为`final`
@@ -1241,7 +1320,7 @@ private final int I_AM_A_CONSTANT = 2;
 ## 抽象类 Abstract Class
 
 ### 具体类（Concrete Classes）和具体方法（Concrete Methods）
-- 具体方法：方法提供了**实现（Implementation）**（具有方法体Method Body）
+- 具体方法：方法提供了**实现**（Implementation）（具有方法体Method Body）
 - 具体类
     - 每个方法均是**具体方法**
     - 可以用来**实例化对象**（例如：`new ConcreteClass(...)`）
@@ -1255,7 +1334,7 @@ private final int I_AM_A_CONSTANT = 2;
 - 使用`abstract`关键词声明
 - 一般来说，抽象类中会包含一个或多个**抽象方法**。但是，抽象类**不包含**抽象方法是**合法**的
 - 如果一个类中包含任何抽象方法，那么这个类**必须**声明为抽象类（即使同时包含具体方法）
-- 抽象类不提供具体的实现，只规定子类需要实现的**公共接口（Commom Interface）**（方法签名Method Signature）
+- 抽象类不提供具体的实现，只规定子类需要实现的**公共接口**（Commom Interface）（方法签名Method Signature）
 ```Java
 public abstract class Animal{
     public abstract void move(); // 注意：需要加分号，不能加大括号
@@ -1294,8 +1373,9 @@ public abstract class Animal {
 }
 ```
 
-# Chapter11: Interface 接口
+# 第11章：接口 Interface 
 > 接口定义并规范了对象之间相互交互的方式
+
 ## 接口的定义
 - 从多个方面来看，接口与**抽象类**相似，但其目的在于为相关类或不相关类的对象指定共同行为。
 - 在Java中，接口被视为一种**特殊类**。每个接口都会被编译成独立的字节码文件，这与常规类完全一致。
@@ -1324,7 +1404,7 @@ public interface Payable{
 
 ## 实现接口 Implementing an Interface
 - 使用关键字`implements`实现接口
-- 具体类必须按照接口中的方法签名实现接口中的所有方法，否则必须为抽象类。
+- 具体类必须按照接口中的方法签名实现接口中的**所有方法**，否则**必须**为抽象类。
 
 ## 使用接口
 - 接口是一种引用类型
@@ -1334,6 +1414,7 @@ public interface Payable{
 Payable p1 = new SubClass();
 p1.getPaymentAmount();
 ```
+
 ## 实现接口 vs 继承类
 - 一个类只能继承自一个超类，但可以实现很多接口
 - 接口可以`extends`很多其它接口
@@ -1348,7 +1429,8 @@ p1.getPaymentAmount();
 - 抽象类**可以有**`protected`和`public`的抽象方法。接口**只能有**`public`的抽象方法
 - 抽象类可以具有**任何访问修饰符**的`static final`或`static`或`final`变量。接口只能具有`public static final`常量
 
-# Chapter13: Generics 泛型
+# 第13章：泛型 Generics 
+
 ## 回忆一下方法重载
 ```Java
 public static void printArray(Integer[] array) {
@@ -1376,9 +1458,10 @@ public static void main(String[] args) {
 }
 ```
 - 那如果，我们还想加入`Long[]`，`String[]`类型的呢？总不能继续重载吧？那用户自定义的类型呢？
-- 于是我们引入了**泛型（Generics）**。如果多个重载方法对每种参数类型执行的操作相同，使用泛型方法可以更简洁地编写这些重载方法。
+- 于是我们引入了**泛型**（Generics）。如果多个重载方法对每种参数类型执行的操作相同，使用泛型方法可以更简洁地编写这些重载方法。
 
 ## 泛型方法 Generic Methods
+
 ### 声明泛型方法 Declaring Generic Methods
 ```Java
 public static <T> void printArray(T[] array){
@@ -1404,9 +1487,10 @@ public static <T extends Comparable<T>> T maximum(T x, T y, T z) {
 ```
 这样我们就可以使其只能接受继承自`Number`的类型或`Number`类型本身，和实现了`Comparable<T>`接口的类
 - 注：这里的`extends`既可以指`extends`也可以指`implements`
+
 ### 底层实现原理
-- 泛型只是一个**语法糖（Syntactic sugar）**，只是为了方便程序员编码，不影响语言的功能
-- 在编译时，编译器会将泛型**擦除（Erasure）**成**类型上界**（默认为`Object`）。例如，上面的泛型方法编译后等效为
+- 泛型只是一个**语法糖**（Syntactic sugar），只是为了方便程序员编码，不影响语言的功能
+- 在编译时，编译器会将泛型**擦除**（Erasure）成**类型上界**（默认为`Object`）。例如，上面的泛型方法编译后等效为
 ```Java
 public static void printArray(Object[] array){
     for(Object element : array) System.out.printf("%s ", element);
@@ -1433,13 +1517,15 @@ int max = maximum(a,b,c);
 int a =1, b = 2, c = 3;
 int max = (int)maximum(a,b,c);
 ```
+
 ## 泛型类 Generic Classes
-- 也被称为**参数化类（Parameterized Class）**
+- 也被称为**参数化类**（Parameterized Class）
 - 许多数据结构（如`Arraylist<T>`，`Stack<T>`可以不需要关注其操作的元素类型
 ```Java
 ArrayList<Integer> li = new ArrayList<>();
 ArrayList<String> ls = new ArrayList<>();
 ```
+
 ### 泛型类的声明 Declaring a Generic Class
 - 类似于普通类的声明，区别在于类名后面跟随类型参数
 - 类型参数部分可以包含一个或多个类型参数（由**逗号**分隔）
@@ -1462,6 +1548,7 @@ public class Stack<T> {
     }
 }
 ```
+
 ### 底层实现原理
 - 擦除（Erasure）：类似于泛型方法，将所有类型参数替换为类型上界（默认为`Object`）
 - 同样，在字节码（Bytecode）层面不存在泛型的概念
@@ -1476,7 +1563,7 @@ public class Stack {
     public Object pop() { ... }
 }
 ```
-- 在使用时，编译器会自动插入显式类型转换（如有必要），来确保**类型安全（Type Safety）**
+- 在使用时，编译器会自动插入显式类型转换（如有必要），来确保**类型安全**（Type Safety）
 ```Java
 Stack<Double> doubleStack = new Stack<Double>(5);
 doubleStack.push(1.2);
@@ -1488,14 +1575,16 @@ Stack doubleStack = new Stack(5);
 doubleStack.push(1.2);
 Double value = (Double) doubleStack.pop()
 ```
+
 ### 类型安全 Type Safety
 ```Java
 String s = "hello world";
 Object obj = s;
 ```
-- 将`String`类型的`s`赋值给`Object`类型的`obj`是**安全（Safe）**的，因为子类的实例同时也是父类的实例
+- 将`String`类型的`s`赋值给`Object`类型的`obj`是**安全**（Safe）的，因为子类的实例同时也是父类的实例
 - 安全（Safe）意味着任何通过`obj`的操作，也可以通过`s`来完成。例如：`obj.equals(o)`的操作，可以通过`s.equals(o)`来完成
 - 反之，`s.trim()`的操作，却无法通过`obj`来实现（没有对应方法），就是不安全（Unsafe）的  
+
 ### 在泛型中的类型安全
 ```Java
 ArrayList<String> ls = new ArrayList<String>();
@@ -1519,7 +1608,7 @@ String s = (String) ls.get(0);
 显然`Double`类型并不能安全转换为`String`类型
 所以，`List<String>`并不是一个`List<Object>`。这有一些反直觉
 - 结论：
-    - 如果`Foo`是`Bar`的子类型（子类或子接口），而`G`是某个泛型类型声明，那么`G<Foo>`并不是`G<Bar>`的子类型
+    - 如果`Foo`是`Bar`的子类型（子类或子接口），而`G`是某个泛型类型声明，那么`G<Foo>`**并不是**`G<Bar>`的子类型
     - 对于任何`T`，`G<?>`都是`G<T>`的超类，示例如下：
 ```Java
 public void processList(List<?> list) {
@@ -1532,7 +1621,8 @@ public void processList(List<?> list) {
 }
 ```
 
-# Chapter14: Exception Handling 异常处理
+# 第14章：异常处理 Exception Handling 
+
 ## 异常 Exception
 **异常**是程序执行过程中出现问题的信号，它会中断程序的正常运行
 ![alt text](image-26.png)
@@ -1548,6 +1638,7 @@ public void processList(List<?> list) {
 ## 异常处理 Exception Handling
 - 异常会中断（Disrupt）程序运行，导致崩溃（Crash）
 - 异常处理能够使程序解决问题后能够**继续运行**，这对关键任务（Mission-Critical）或关键业务计算（Business-Critical Computing）非常重要
+
 ### `try-catch`语句
 - `try`代码块后面**至少有一个**`catch`块或者有`finally`块，且必须紧密相连（中间不能有任何其他内容）
 - 每个`catch`块可以处理一种异常（包括其子类异常），例如在下例中只使用`catch(Exception e){}`
