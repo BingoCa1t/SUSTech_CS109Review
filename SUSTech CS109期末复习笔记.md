@@ -23,7 +23,7 @@
 
 ## Java简史
 - 1994年Sun Microsystems公司（2009年被Oracle收购）创立的项目，目标是"write once, run anywhere"。这个基于**C++**的语言被命名为**Java**
-- 为什么叫Java？因为爪哇（Java）岛盛产咖啡，而“程序员要喝大量的咖啡”
+- 为什么叫Java？因为爪哇（Java）岛盛产咖啡，而“**程序员要喝大量的咖啡**”
 - Java之父：James Gosling
 - Java的第一个版本：JDK1.0，1996年10月23日发布
 
