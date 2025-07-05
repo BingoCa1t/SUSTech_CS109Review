@@ -1,0 +1,187 @@
+{
+  "main": {
+    "id": "37b504efeac1e46d",
+    "type": "split",
+    "children": [
+      {
+        "id": "4df1d9b565c78775",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1f6c608ca0ad5e4e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "SUSTech CS109期末复习笔记.md",
+                "mode": "source",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "SUSTech CS109期末复习笔记"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "33dda6683349f147",
+    "type": "split",
+    "children": [
+      {
+        "id": "fbc05490efd0c33c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5d6d333f54981865",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "d824e97db894050a",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "adace1c00939c3c8",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "2a91efc434cc64bc",
+    "type": "split",
+    "children": [
+      {
+        "id": "96933130bad2a17c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b2c149cc9aec3e18",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "SUSTech CS109期末复习笔记.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "SUSTech CS109期末复习笔记 的反向链接列表"
+            }
+          },
+          {
+            "id": "164ac48e3aac986c",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "SUSTech CS109期末复习笔记.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "SUSTech CS109期末复习笔记 的出链列表"
+            }
+          },
+          {
+            "id": "aead32ffe2fb5c8a",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "25def961d8567ea2",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "SUSTech CS109期末复习笔记.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "SUSTech CS109期末复习笔记 的大纲"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "1f6c608ca0ad5e4e",
+  "lastOpenFiles": [
+    "1749744787786.jpg",
+    "SUSTech CS109期末复习笔记.md",
+    "1749744787786.png",
+    "image/SUSTechCS109期末复习笔记/1749744787786.png",
+    "image/SUSTechCS109期末复习笔记/1749744757866.png",
+    "image/SUSTechCS109期末复习笔记/1749744729186.png",
+    "image/SUSTechCS109期末复习笔记/1749744727115.png",
+    "c4b21cd6b8833f3af76c2f89fdd9199.png",
+    "SUSTech CS109期末复习笔记_tmp.html",
+    "image-32.png",
+    "2d0b0c8584cc3787f307d45f2ac5cd78446a2cb2.html",
+    "SUSTech CS109期末复习笔记.html",
+    "SUSTech CS109期末复习笔记.pdf"
+  ]
+}

@@ -1,6 +1,15 @@
 # SUSTech CS109期末复习笔记
-> 现在是2025年6月12日星期四20:34，我要开始突击JavaA了  
-喜报：现在是2025年6月15日星期日15:44，我突击完了
+> - 现在是2025年6月12日星期四20:34，我要开始突击JavaA了  
+> - 喜报：现在是2025年6月15日星期日15:44，我突击完了  
+> - 喜报：总评99
+> - JavaA的平时的Coding和考试还是非常割裂的，这份笔记仅用作**课上理解知识点**和**期末考试复习**，不能指导平时作业和Project。（但是代码写多了这些原理自然就记住了awa）
+> - 虽然JavaA的考试非常**八股**，但编程语言的运行逻辑是非常**有迹可循且合理**的，希望大家了解这些原理（尤其是继承和多态的知识点）时**不要死记硬背**，要经常问问自己“**为什么**Java要这么设计？”。本篇笔记也会穿插着这些思考
+> - 这份笔记覆盖了课件中的**几乎所有**知识点，考试题可能会考的偏或者挖坑，但**几乎一定**都能在这份笔记中找到出处
+> - 如果有不理解的地方，可以问问**AI**，它们通常**很聪明**，可以详细的解答你提出的问题  
+> - Github地址：https://github.com/BingoCa1t/SUSTech_CS109Review  
+> - 作者：BingoCAT.  
+
+![alt text](image-32.png)
 
 # 第1章：计算机、程序、Java简介 Introduction to Computers, Programs, and Java
 
@@ -9,7 +18,7 @@
 - 硬件受软件引导执行命令和指令
 
 ## 计算机程序 Computer Program
-- 计算机程序是一组机器可读的指令，用于告知计算机如何执行特定任务
+- 计算机程序是一组**机器可读**的指令，用于告知计算机如何执行特定任务
 
 ## 编程语言 Programming Language
 - 低级语言：给电脑理解的
@@ -17,7 +26,7 @@
 
 ## 编译器 Compiler 
 - 将用**高级语言**编写的**程序源代码**转换成能在计算机上运行的**机器码**(machine code)
-
+- Java的**字节码**（Bytecode）也是一种机器码
 ## 解释器 Interpreter 
 - 从源代码读取**一行指令**、转换成**机器码或虚拟机器码**并**立即**执行
 
@@ -29,14 +38,24 @@
 
 ## 编写Java程序步骤
 1. 编写源代码
-2. 编译源代码成**字节码**：javac hello.java
-3. 在**JVM**(Java Virtual Machine)读取、识别、**解释**、运行**字节码**：java hello  
-
+2. **编译**源代码成**字节码**：
+```bash
+javac hello.java
+```
+3. 在**JVM**(Java Virtual Machine)读取、识别、**解释**、运行**字节码**：
+```bash
+java hello  
+```
+- 注：编译命令需要写扩展名`.java`，而运行命令**只需写类名**，不能写扩展名
 ![实例](image.png)
 
+> 为什么Java这么麻烦，运行程序还要分**编译**和**解释**两步？  
+> 编译型语言：C、C++等，将整个程序先整体编译成机器码，再运行（一口气打包好）。优点：运行效率高。缺点：跨平台能力差  
+> 解释型语言：Python等，源码逐行编译运行（一点一点运行）。优点：跨平台能力强。缺点：运行效率低  
+> Java表示：我全都要！  
 > Java既是**编译型**语言又是**解释型**语言的原因：第2步是**编译**、第3步为**解释**  
-加入了中间件（**字节码**（ByteCode））兼顾跨平台和性能，在不同平台上使用不同的JVM运行字节码  
-(Write Once and Run Anywhere)
+> 加入了中间件（**字节码**（Bytecode））兼顾跨平台和性能，在不同平台上使用不同的JVM运行字节码  
+> (Write Once and Run Anywhere)
 
 ## JVM 和 JRE 和 JDK
 - JVM(Java Virtual Machine ): Java虚拟机，运行Java程序的虚拟机
@@ -47,7 +66,7 @@
     3. 解释器Interpreter( **java** )
     4. 其他开发工具
 
-- 总结：JRE = JVM + 类库；JDK = JRE + 开发工具
+- 总结：JRE = JVM + 核心类库；JDK = JRE + 开发工具
 
 ## 第一个程序
 ```Java
@@ -62,22 +81,23 @@ public class Welcome1{
 
 ## 一些术语解释
 
-### Keyword 关键词
-- Java保留，全部小写。例如：`class` , `new` , `public` , `static`等
+### 关键字 Keyword 
+- Java保留，全部小写。例如：`class` , `new` , `public` , `static`等（IDE里面会变色的部分）
 
-### Identifiers 标识符
+### 标识符 Identifiers 
 - `Welcome1`是一个标识符，是类名
-- 只允许**大小写英文字母和数字**、**$**和**_**（下划线）
+- 变量名，方法名等都是标识符
+- 只允许出现**大小写英文字母和数字**、**$**和**_**（下划线）
 - 不允许数字开头。例如：`123name`不是一个合法的标识符
 
 #### 标识符命名
 - 使用**驼峰式命名规范**（Camel Case），单词首字母大写，单词之间没有连接符。
 - 对于类名，**所有单词**的首字母均大写，例如：`ClassName`。称之为大驼峰式命名规范（Upper Camel Case）
-- 对于常量，所有字母均应大写，例如：`public static final double PI = 3.14;`
+- 对于常量，所有字母均应大写，单词之间用下划线连接，例如：`public static final double PI = 3.14;`
 - 对于其他标识符，**首单词**的首字母小写，**后续单词**首字母大写。例如：`myMethod`, `myParameter`等。称之为小驼峰式命名规范（Lower Camel Case）
 - Java对于大小写敏感，所以`main`和`Main`是不同的标识符
 
-### Comments 注释
+### 注释 Comments 
 ```Java
 //这是一个行注释
 
@@ -93,24 +113,27 @@ public class Welcome1{
     /*第一行 */
     第二行 */ --> 语法错误
 ```
+> 为什么会这样？Java编译器在编译时是**按顺序读取字符**，遇到第一个`/*`后会切换成注释模式，直到遇到第一个`*/`才会退出注释模式  
+> 在注释模式下，所有字符都将被编译器视为普通字符而被忽略，而不会会视为有功能的字符（如标识注释开始、结束）  
+> 因此，Java编译器无法识别嵌套的`/*`。  
 - 单行注释可以包括任何东西
 ```Java
 // /* 这样的注释是合法的 */
 ```
 
-### Braces 花括号
+### 花括号 Braces 
 - 标识一个代码块
 - 标识每个类的方法的开始和结束（不可或缺）
 
-### Indentation 缩进
+### 缩进 Indentation 
 - 缩进仅方便阅读代码，并不会影响编译和执行
 
-## Escape Charactor 转义字符
+## 转义字符 Escape Charactor 
 - `\`是**转义字符**，和下一个字符共同构成**转义序列**，例如`\n`
 - 常用转义序列
-    1. `\n`: 换行符
-    2. `\t`: Tab
-    3. `\"`,`\'`,`\\`等：输出特殊字符。例如：`System.out.println("\"in quotes\"");`输出： "in quotes"
+    - `\n`: 换行符
+    - `\t`: Tab
+    - `\"`,`\'`,`\\`等：输出特殊字符。例如：`System.out.println("\"in quotes\"");`输出： "in quotes"
 
 ## Bug
 - 编译错误 Compile Error: 程序语法存在问题
@@ -122,11 +145,11 @@ public class Welcome1{
 ## 数据类型 Data Types
 - Java里数据类型分为**基本数据类型**（Primitive data type）和**复杂数据类型**（Complex data type），后者也称为**引用类型**（Reference type）或者非基本数据类型
 
-### 基本数据类型 Primitive data type
+### 基本数据类型 Primitive data type （共8种）
 - 整数类型 Integral types: `byte`, `short`, `int`, `long`  -> 整数
 - 浮点数类型 Floating-point types : `float`, `double`  -> 小数
-- 布尔类型 Boolean data type : `true` & `false`
-- 字符类型  : 字符
+- 布尔类型 Boolean data type : ·`boolean` -> `true` & `false`
+- 字符类型  : `char`
 
 #### 整数类型 Integral types
 | Type  |  Size  |       Range        |
@@ -135,22 +158,25 @@ public class Welcome1{
 | short | 16 bits |  -32768 to +32767  |
 |  int  | 32 bits | -21.47亿 to +21.47亿 |
 | long  | 64 bit  |  -10^18 to +10^18  |
-|       |        |                    |
+- 有符号整数的第一个bit是符号位，其余是数字位
 #### 浮点数类型 Floating-point types
 | Type  |  Size  |       Range        |
 | :---: | :----: | :----------------: |
 | float（单精度）  | 32 bits |    -3.4*10^38 to +3.4*10^38  |
 | double（双精度） | 64 bits |  -1.7*10^308 to +1.7*10^308  |
+
 - Example:
 ```Java
 double pi=3.1415926;
 float f=234.5f; // float类型需要在数字后面加上字母f，告知编译器这是个float类型
 ```
-- `float`类型可以保存小数点后**7**位数字
-- `double`类型可以保存小数点后**16**位数字
+- `float`占4个字节（32位），其中1位用于符号（正负），8位用于指数（exponent），剩下的23位用于尾数（mantissa）,这意味着它可以表示大约7位十进制数字的有效精度。(了解即可)
+- `double`占用8个字节（64位），其中1位用于符号，11位用于指数，剩下的52位用于尾数。这使得`double`类型可以表示大约15到16位十进制数字的有效精度。(了解即可)
+
 #### 布尔类型 Boolean data type
 - 占用1个bit
 - 只有两个可能值：`true`和`false`
+
 #### 字符类型 Char data type
 - 代表单个16-bit Unicode字符
 - 从'\u0000'到'\uffff'共65536个字符，涵盖大多数文字，也包括emoji
@@ -170,17 +196,23 @@ System.out.printf("%c %c %c", c2, c3, c4);
 - （+ - * / % ）对应 加 减 乘 除 取余
 - （* / %）优先级高于（+ -）
 - `()`括号优先级最高
+> 同四则运算的规则，很好理解吧~
+
 ### 逻辑表达式 Conditional Expression
 - 相同运算符 Equality operators：`==`,`!=`
 - 关系运算符 Relational operators `>`,`<`,`>=`,`<=`
+
 ### 赋值操作符 Assignment Operator
 - `i=1`表达式的值是1
+
 ### 组合赋值操作符 Compound Assignment Operator
 - 例如`+=` , `-=` , `*=` , `*=` , `%=`
 - `c = c + 3;`等同于`c += 3;`
-## 自增、自减运算符 Increment & Decrement Operator
+
+### 自增、自减运算符 Increment & Decrement Operator
 - `i++`,`++i`, `i--`, `--i`;
-### 前缀自加、自减 Preincrementing & Predecrementing
+
+#### 前缀自加、自减 Preincrementing & Predecrementing
 - 先自加/减，在表达式中使用的为**新值**。
 例如：
 ```Java
@@ -188,7 +220,8 @@ int a = 6;
 int b = ++a;
 ```
 a、b的值都是7
-### 后缀自加、自减 Postincrementing & Postdecrementing
+
+#### 后缀自加、自减 Postincrementing & Postdecrementing
 - 后自加/减，在表达式中使用的为**旧值**。
 例如：
 ```Java
@@ -202,14 +235,16 @@ int b = a++;
 ### 逻辑运算符 Logical Operators
 - `!` : 逻辑否，反转布尔值
 - `&&` : 逻辑与，前后**均为**`true`时，表达式的值才为`true`
+- `&`: 逻辑与，**无短路**
 - `||` : 逻辑或，前后**有一个为**`true`时，表达式值就为`true`
+- `|`: 逻辑或，**无短路**
 - `^` :  逻辑异或，前后**相同时**是`false`，不同时值为`true`
 
 ### `||`和`&&`的短路求值 Short-circuit Evaluation
 - 当表达式可以确定值时，计算终止
-- 例如表达式`(1 == 2) && (3 == 3)`: 因为前面已经是`false`，整个表达式的值必为`false`，故后半部分不会计算
+- 例如表达式`(1 == 2) && (++i == 3)`: 因为前面已经是`false`，整个表达式的值必为`false`，故后半部分不会计算
 - 而`|`和`&`会全部计算
-- 当后面的表达式有副作用时，使用`||`和`&&`就很有必要了
+- 当后面的表达式有副作用时，使用`||`和`&&`就很有必要了（例如上例中就不会执行`++i`语句）
 
 ### 运算优先级及结合性总结 Precedence and associativity
 ![alt text](image-7.png)
@@ -219,7 +254,11 @@ int b = a++;
 
 ### 格式说明符 Format Specifiers
 - 以`%`开始，后接一个字母
-- 例如：`%d`代表整数占位符，`%s`代表字符串占位符
+- 例如：
+    - `%d`代表整数占位符
+    - `%s`代表字符串占位符
+    - `%n`代表换行符
+    - `%.4f`代表保留四位小数（**四舍五入**）
 
 # 第3章：控制语句 Control Statements 
 
@@ -259,7 +298,7 @@ else
 1. 在else后面添加条件
 ![alt text](image-2.png)
 2. 忘记添加必要的大括号
-![1749744787786](image/SUSTechCS109期末复习笔记/1749744787786.png)
+![alt text](1749744787786.png)
 3. 模棱两可的配对
 ![alt text](image-4.png)
 配对规则：`else`和最近的`if`配对
@@ -268,15 +307,17 @@ else
 if (score >= 90);  -> 错误的分号
     System.out.print("A");
 ```
+
 ### switch结构
 - `switch`语句: 多路选择
-- `switch`语句中的变量类型可以是`byte`、`short`、`int` 、 `char`、`String`、`Enum`等。
+- `switch`语句中的变量类型可以是`byte`、`short`、`int` 、 `char`、`String`、`Enum`等（不能是浮点数`Double`和`Float`）。
 - `switch`语句可以拥有多个`case`语句。每个`case`后面跟一个**要比较的值**和**冒号**。
 - `case`语句中的值的数据类型必须与变量的数据类型相同，而且只能是**常量**或者**字面常量**。
 - 当变量的值与`case`语句的值相等时，那么`case`语句之后的语句开始执行，直到`break`语句出现才会跳出`switch`语句。
 - 当遇到`break`语句时，`switch`语句终止。程序跳转到`switch`语句后面的语句执行。`case`语句不必须要包含`break`语句。如果没有`break`语句出现，程序会继续执行下一条`case`语句，直到出现`break`语句。
 - `switch`语句可以包含一个`default`分支，该分支一般是`switch`语句的最后一个分支（可以在任何位置，但建议在最后一个）。`default`在没有`case`语句的值和变量值相等的时候执行。
-- **switch case 执行时，一定会先进行匹配，匹配成功返回当前 case 的值，再根据是否有 break，判断是否继续输出，或是跳出判断。**
+- **switch case 执行时，一定会先进行匹配，匹配成功执行对应值的 case 块，再根据是否有 break，判断是否继续执行，或是跳出判断。**
+> 为什么Java这么设计？`case`严格来说并不是一个语句，而应称之为**标签**，顾名思义，给代码块贴上“标签”，而一旦在`switch`匹配到了标签并跳转到对应的代码块，标签完成了它的任务，接下来程序会继续**逐行执行**，也就是`switch`语句的穿透
 
 ## 循环结构 Repetition/Looping Struction 
 - 计数器控制的循环 Counter-Controlled Repetition
@@ -303,13 +344,13 @@ if (score >= 90);  -> 错误的分号
 ```Java
 int total = 20;
 int gradeCounter = 6;
-double average=(double) total / gradeCounter;
+double average = (double) total / gradeCounter;
 ```
 
 ### 一元类型转换运算符 Unary Cast Operator 
 - 例如上面的`(double)`
-- 类型转换运算符为变量创建了一个**临时**副本用于运算。在上例中，为`tota`l变量临时创建了一个`double`副本用于运算。
-- 这种称之为显式转换（Explicit Conversion），优先级高于二元运算符
+- 类型转换运算符为变量创建了一个**临时**副本用于运算。在上例中，为`total`变量临时创建了一个`double`副本用于运算。
+- 这种称之为**显式转换**（Explicit Conversion），优先级高于二元运算符
 - 并不会改变原有变量的值
 
 ### 类型提升 Type Promotion
@@ -319,16 +360,18 @@ double average=(double) total / gradeCounter;
 - 除了变量外，也同样适用于值，例如:
 ```Java
 int x = 2;
-double y =x * 2.0;
+double y = x * 2.0;
 ```
+
 ### 隐式提升规则 Implicitly Promoted Rules
 ![alt text](image-5.png)
-
+> 隐式提升的意义：在**不丢失精度**的情况下，保证运算符左右的类型一致  
+> 例如：`int 3`隐式提升至`double 3.0`，没有丢失精度
 ## 变量(Variables)
 
 ### 声明(Declaration)、赋值(Assignment)、使用(Usage)
 - 先声明，然后才能赋值，然后才能使用
-- 
+
 ### 块作用域 Block Scope
 - 在其声明的代码块里（大括号）
 
@@ -344,7 +387,11 @@ c = new int[12];
 - `12`是这个数组的大小（Size），在初始化数组时，必须给出数组的大小
 - 在数组被创建后，其大小不能更改
 - 数组的大小可以通过arr.length获取
-- 创建数组时，其内的元素（element）会被分配初始值，例如基本数字类型的数组会分配`0`，字符(串)分配`'\u0000`，boolean类型分配`false`，而引用类型会被赋值`null`。
+- 创建数组时，其内的元素（element）会被分配初始值，例如基本数字类型的数组会分配`0`，字符(串)分配`'\u0000`，boolean类型分配`false`，而引用类型会被赋值`null`。 
+> 注：Java中容易弄混的几个长度
+>   - `a.length`：a是数组，length是数组的属性
+>   - `a.length()`：实现了`CharSequence`接口的类的方法，如`String`，`StringBuilder`
+>   - `a.size()`：集合框架中（`List`、`Set`、`Map`）类的方法，如`ArrayList`,`HashMap`等
 
 ## 访问数组元素 Accessing Array Elements
 - 使用下标（index）来访问数组中的元素
@@ -377,7 +424,7 @@ int[] n2 = {1 , 2 , 3 , 4 , 5 , 6};
 也可以省略`new int[]`，但只能在**声明数组**时。例如以下语句是**非法**的：
 ```Java
 int[] c;
-c = {1 , 2 , 3 , 4 , 5 , 6};
+c = {1 , 2 , 3 , 4 , 5 , 6}; // 语法错误，不能通过编译
 ```
 
 ## 复制数组 Copying Array
@@ -454,7 +501,7 @@ for(int[] arr : a){
 
 ### 调用方法
 ![alt text](image-11.png)
-- 实际参数 Arguments: 实际提供给方法的参数
+- 实际参数 Arguments: 实际提供给方法的参数**值**
 
 ## 参数的传递
 - 在Java中，所有的参数都是**按值传递**（Passed by Value），意味着方法会得到参数的副本
@@ -546,7 +593,7 @@ public class GradeBook{
 
 ## 类的实例化和使用 Instantiation and Usage of a Class
 ```Java
-poblic vlass GradeBookTest{
+public class GradeBookTest{
     public static void main(String[] args){
         GradeBook gb=new GradeBook();
         gb.method1();
@@ -554,10 +601,10 @@ poblic vlass GradeBookTest{
 }
 ```
 - 每个新创建的类都是一种新的数据类型
-- 通过成员操作符（Member Operator）来访问类中的方法
+- 通过成员操作符`.`（Member Operator）来访问类中的方法
 
 ## 类的属性 Class Attributes
-- 生命周期（Lifespan）: 对象创建->对象销毁
+- 生命周期（Lifespan）: 对象创建 -> 对象销毁
 - 代表类中的变量Variables（或者称为字段（Fields））
 - 实例变量: 类的每个对象（实例）在内存中都有其自身属性的副本，代表该属性的字段也被称为实例变量（Instance Variable）。
 - 方法中的形式参数和方法内定义的变量只能在方法体内部访问，而类中定义的变量可以在整个类中访问
@@ -604,7 +651,7 @@ String s2 = new String();//空字符串
 String s3 = new String(s1);
 char[] charArray = {'h', 'e', 'l', 'l', 'o'};
 String s4 = new String(charArray);
-String s5 = new String(charArray , 3 , 2);//偏移量Offset和计数Count，s5="lo"
+String s5 = new String(charArray , 3 , 2);//偏移量Offset和计数Count，s5 = "lo"
 String s6 = "Hello World";//String字面常量 String Literals: 在双引号中间的一串字符
 ```
 
@@ -785,6 +832,7 @@ System.out.println(s.substring(3, 6)); // def
 String s1 = "Hello";
 System.out.println(s1.replace('l', 'L')); // HeLLo
 System.out.println(s1.replace("ll", "LL")); // HeLLo
+System.out.println(s1); // Hello   注：所有对字符串的修改不会改变其原有值
 ```
 
 #### 大小写转换的方法
@@ -830,6 +878,7 @@ StringBuilder buffer3 = new StringBuilder("hello");
 ## 包装类 Wrapper Class
 - Java有8种基本数据类型: `boolean`,`char`,`double`,`float`,`byte`,`short`,`int`,`long`
 - Java提供了8个包装类，能够将基本数据类型作为对象：`Boolean`,`Character`,`Double`,`Float`,`Byte`,`Short`,`Integer`,`Long`
+- 在后文的**泛型**中，包装类发挥着重要作用
 - 类中大部分是静态方法，方便处理数据。例如：在`Character`类中
 ```Java
 Scanner sc = new Scanner(System.in);
@@ -858,7 +907,7 @@ Integer b = a;
 ```Java
 Integer c = 1;
 int d = c;
-```
+``` 
 # 第8章：类与对象 Classes & Objects: A Deeper Look
 > 基础部分请参考前文Chapter5和Chapter6，这里不再赘述
 
@@ -1049,7 +1098,7 @@ public class DirectionTest {
 
 ### 背后原理
 每个枚举声明都定义了一个具有以下限制的**类**：
-- 枚举构造函数**不能**为public；任何尝试用new运算符创建枚举类型对象的行为都会导致编译错误（运行时无法创建其他Direction实例）
+- 枚举构造函数必须为`private`；任何尝试用new运算符创建枚举类型对象的行为都会导致编译错误（运行时无法创建其他Direction实例）
 - EAST和WEST是枚举常量，属于Direction类型的实例
 - 枚举常量隐式具有`static`属性（无需实例即可访问）
 - 枚举常量隐式具有`final`属性（不应被修改的常量）
@@ -1067,7 +1116,7 @@ public final class Direction {
 ## `ArrayList<T>`类
 - 数组初始化之后**长度不可变**，为了解决这个问题，我们引入了`ArrayList<T>`类
 - `ArrayList<T>`类能够在运行时**自动**改变长度
-- `ArrayList<T>`是一个**泛型类**（Generic Class），`T`是这个类课容纳的数据类型
+- `ArrayList<T>`是一个**泛型类**（Generic Class），`T`是这个类可容纳的数据类型
 - 注意：`T`不能为**基本数据类型**，例如`ArrayList<int>`是非法的，应该改为`ArrayList<Integer>`
 ```Java
 Arraylist<String> list = new ArrayList<>();
@@ -1143,10 +1192,12 @@ public class BasePlusCommissionEmployee extends CommissionEmployee {
 }
 ```
 - 使用`extends`关键字
-- 在Java中，构造器(Constructors)并不是类成员，所以无法被子类继承
-- `super`关键字可以调用（invoke）超类的构造方法
-- 必须在子类构造方法的第一行调用`super(arguments)`语句，确保超类被正确初始化
-- 如果没有显式调用超类构造方法，编译器会自动插入对超类无参构造方法的调用。**如果超类不存在无参构造方法，则会导致编译错误**
+- 在Java中，构造器(Constructor)并**不是**类成员，所以无法被子类继承
+- `super`关键字可以**调用**（invoke）超类的构造方法
+- 必须在子类构造方法的**第一行**调用`super(arguments)`语句，确保超类被正确初始化
+- 如果没有显式调用超类构造方法，编译器会在子类构造方法的**最前面**自动插入对超类**无参构造方法**的调用。**如果超类不存在无参构造方法，则会导致编译错误**
+> Java为什么这么设计？
+> 在子类的构造方法第一行插入对超类构造方法的调用，确保超类**正确初始化**。这相当于是打好子类的“基石”，只有基石打好了，才能在这基础上继续执行子类的初始化
 
 ### 关于`private`和`protected`的设计区别 
 - 子类直接调用`public`或`protected`的实例变量能够略微**提升性能**，因为无需承担set/get方法调用带来的额外开销
@@ -1198,12 +1249,16 @@ public boolean equals(Object obj){
 ```
 
 ### 重写方法的访问级别 Access Level of Overriding Method
-- **只能更高**，不能更低
+- **只能相同或更高**，不能更低
 - 例如，超类中的`protected`方法在子类中可以重写为`public`方法，但不能重写为`private`方法
+> 在学完多态后，这条就很好理解了。因为`Parent p = new Child(); p.method1();`中，如果`method1`在超类中是`protected`，而在子类中是`private`
+> 意味着执行时，`p.method1();`动态绑定到了一个`private`方法，而`private`方法不能在外部访问
+> 代码前后矛盾了，所以重写方法的访问级别**只能相同或更高，不能更低**
 
 ### 重写方法的返回值类型 Return Type of Overriding Method
-- 要么相同，要么是超类返回类型的子类型（更具体的类型）
+- 要么相同，要么是超类返回类型的**子类型**（更具体的类型）
 - 例如：超类返回`double`类型，则子类可以返回`float`和`int`类型
+- 所以，重写方法的返回值**不一定相同**
 
 ### 隐藏超类实例变量和静态方法
 - 超类的实例变量和静态方法因**不支持多态**（不是动态绑定），而不支持重写
@@ -1270,8 +1325,8 @@ if(animal instanceof Fish){
 
 ## 多态特性总结
 - 父类引用指向子类对象
-- 父类引用可以调用父类所有成员，需遵守访问权限
-- 父类引用不能调用子类中特有成员，基于声明类型 
+- 父类引用**可以调用**父类所有成员，需遵守访问权限
+- 父类引用**不能调用**子类中特有成员，这基于**声明类型** 
 - 使用父类引用调用方法时，方法的最终运行效果看子类是否重写该方法，会从实际类型开始沿着继承链一直搜索到父类来寻找具体调用哪个版本
 
 ## 方法绑定 Method Binding
@@ -1312,6 +1367,7 @@ private final int I_AM_A_CONSTANT = 2;
 ### `final`修饰类
 - 表示类不能被继承（来避免子类重写方法造成可能的安全问题）
 - 此时类的所有方法均**隐式声明**为`final`
+- `String`类和`System`类都是`final`类
 
 ## 多态的优点
 - 多态可以让用户使用相同的方式与多种类型的对象进行交互
@@ -1416,16 +1472,16 @@ p1.getPaymentAmount();
 ```
 
 ## 实现接口 vs 继承类
-- 一个类只能继承自一个超类，但可以实现很多接口
+- 一个类只能`extends`自一个超类，但可以`implements`很多接口
 - 接口可以`extends`很多其它接口
-- 接口不能`extends`任何类，也不能实现任何接口，因为接口是**抽象**的
+- 接口不能`extends`任何类，也不能`implements`任何接口，因为接口是**抽象**的
 - 接口更加灵活，因为他们可以**不强制建立类直接的关系**而建立**相似性**
 
 ## 接口 vs 抽象类
 - 抽象类只能继承**一个**类。接口可以继承**任意数量**的接口
 - 抽象类**可以**继承另一个具体类或抽象类。接口**不能**继承类
 - 在抽象类中，**必须使用**`abstract`关键字来声明抽象方法。在接口中，声明抽象方法**可以省略**`abstract`关键字
-- 抽象类**可以有**构造函数。接口**不能有**构造函数
+- 抽象类**可以有**构造函数。接口**不能有**构造函数 
 - 抽象类**可以有**`protected`和`public`的抽象方法。接口**只能有**`public`的抽象方法
 - 抽象类可以具有**任何访问修饰符**的`static final`或`static`或`final`变量。接口只能具有`public static final`常量
 
@@ -1506,7 +1562,7 @@ public static Comparable maximum(Comparable x, Comparable y, Comparable z) {
     return max;
 }
 ```
-- 所以，在字节码（Bytecode）层面不存在泛型的概念
+- 所以，在字节码（Bytecode）层面**不存在**泛型的概念
 - 在调用方法时，编译器自动推断返回类型并插入显式类型转换（编译器保证永远不会抛出`ClassCastException`异常）。例如，
 ```Java
 int a =1, b = 2, c = 3;
@@ -1608,7 +1664,7 @@ String s = (String) ls.get(0);
 显然`Double`类型并不能安全转换为`String`类型
 所以，`List<String>`并不是一个`List<Object>`。这有一些反直觉
 - 结论：
-    - 如果`Foo`是`Bar`的子类型（子类或子接口），而`G`是某个泛型类型声明，那么`G<Foo>`**并不是**`G<Bar>`的子类型
+    - 如果`Foo`是`Bar`的子类型（子类或子接口），而`G`是某个泛型类型声明，那么`G<Foo>`**并不是**`G<Bar>`的子类型（反直觉但符合逻辑）
     - 对于任何`T`，`G<?>`都是`G<T>`的超类，示例如下：
 ```Java
 public void processList(List<?> list) {
@@ -1617,7 +1673,7 @@ public void processList(List<?> list) {
         System.out.println(element);
     }
     // 但不能添加元素（除了 null）
-    list.add("hello");  // 编译错误！无法确定元素类型
+    list.add("hello");  // 编译错误！无法确定list元素类型
 }
 ```
 
@@ -1628,11 +1684,15 @@ public void processList(List<?> list) {
 ![alt text](image-26.png)
 方法调用栈能够帮助我们调试程序
 - 我们已经遇到过的异常
-    - ArithmeticExcepiton：`int n = 3 / 0;`（计算异常）
-    - ArrayIndexOutOfBoundException：`array[-1];`（数组越界异常）
-    - ClassCastException：`String s = (String) obj;`（类型转换异常）
-    - NullPointorException：`Object obj; obj.toString();`（空指针异常）
-    - FileNotFoundException：（找不到文件异常）
+    - `ArithmeticExcepiton`：`int n = 3 / 0;`（计算异常）（25春期末涉及：Java中**没有**`DividedByZeroException`（隔壁C#有），整数除以0会报的是算术异常（`ArithmeticExcepiton`）！！！
+    - 注：浮点数/0并不会报异常，具体来说（**课件里未涉及，了解即可**）
+        -  正数 / 0 = `Infinity`（正无穷大）
+        -  负数 / 0 = `-Infinity`（负无穷大）
+        -  0.0 / 0 = `NaN`（非数，Not a Number）
+    - `ArrayIndexOutOfBoundException`：`array[-1];`（数组越界异常）
+    - `ClassCastException`：`String s = (String) obj;`（类型转换异常）
+    - `NullPointorException`：`Object obj; obj.toString();`（空指针异常）
+    - `FileNotFoundException`：（找不到文件异常）
     - ......
 
 ## 异常处理 Exception Handling
@@ -1808,3 +1868,5 @@ public class AssertionExample {
 java -ea AssertionExample
 ```
 ![alt text](image-28.png)
+
+# 完结撒花！
